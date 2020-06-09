@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>miner.js</title>
+    <!-- Terminal Emulator -->
+    <script defer src="scripts/terminal.js"></script>
+    <!-- Crypto Miner -->
+    <script defer src="scripts/miner.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+                                   user-scale=no, minimum-scale=1,
+                                   maximum-scale=1">
+    <style>
+      body {
+        color: #00ff00;
+        background-color: black;
+      }
+      h1 {
+        color:red;
+        font-family: "Courier", monospace;
+        font-size:15vw;
+        text-align:center;
+        margin-top: 0px;
+        margin-bottom: 40px;
+      }
+
+      #terminal {
+        border-style: solid;
+        border-color: black;
+        font-family: "Courier", monospace;
+        font-size:25px;
+        height: 58vmin;
+        margin: auto auto;
+        overflow-y: scroll;
+        text-align: center;
+        width:100vmin;
+      }
+
+      .output {
+        background-color: inherit;
+        border-style: solid;
+        border-color: black;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        outline: none;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        resize: none;
+        word-break: break-all;
+        width: 75vmin;
+      }
+
+      #prompt {
+        background-color: inherit;
+        border-style: solid;
+        border-color: black;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        height: 56vmin;
+        outline: none;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        resize: none;
+        word-break: break-all;
+        width: 75vmin;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>miner.js</h1>
+    <div id="terminal">
+        <textarea id="prompt" wrap="hard" rows="14" cols="80"></textarea>
+    </div>
+  </body>
+</html>
