@@ -51,51 +51,20 @@ function interpret() {
   // TODO
 }
 
-// func for enter key
+// func for keys
 function get_input(event) {
-  // check cursor position
-  if (event.target.selectionStart == 2) {
-    // prevent certain default actions if we are at prompt chars
-    switch (event.key) {
-      case "Left":
-      case "ArrowLeft":
-        // nullify default key action
-        event.preventDefault();
-        break;
-      case "Right":
-      case "ArrowRight":
-        // nullify default key action
-        event.preventDefault();
-        break;
-      case "Backspace":
-        // nullify default key action
-        event.preventDefault();
-        break;
-      case "Clear":
-        // nullify default key action
-        event.preventDefault();
-        break;
-      case "Delete":
-        // nullify default key action
-        event.preventDefault();
-        break;
-    }
-  } else {
-      switch (event.key) {
-        case "Down":
-        case "ArrowDown":
-          // nullify default key action
-          event.preventDefault();
-          break;
-        case "Up":
-        case "ArrowUp":
-          // nullify default key action
-          event.preventDefault();
-        break;
-      }
-  }
+  // check for enter to handle input and printing
+  if (event.key == 'Enter') {
+    // keep out annoying newline
+    event.preventDefault();
 
-  if (event.ctrlKey) {
+    // get input
+    let input = event.target;
+
+    // print
+    print(input);
+  }
+  else if (event.ctrlKey) {
     // check if CTRL key is being pressed for special editing
     switch (event.key) {
       case "a":
@@ -181,15 +150,65 @@ function get_input(event) {
         // get history
         break;
     }
-  } else if (event.key == 'Enter') {
-    // keep out annoying newline
-    event.preventDefault();
+  }
+  else if (event.target.selectionStart == 2) {
+    // prevent certain default actions if we are at prompt chars
+    switch (event.key) {
+      case "Up":
+      case "ArrowUp":
+        // nullify default key action
+        event.preventDefault();
 
-    // get input
-    let input = event.target;
+        // now move cursor back to beginning of prompt
+        event.target.setSelectionRange(2, 2);
+      break;
+      case "Left":
+      case "ArrowLeft":
+        // nullify default key action
+        event.preventDefault();
+        break;
+      case "Right":
+      case "ArrowRight":
+        // nullify default key action
+        event.preventDefault();
+        break;
+      case "Backspace":
+        // nullify default key action
+        event.preventDefault();
+        break;
+      case "Clear":
+        // nullify default key action
+        event.preventDefault();
+        break;
+      case "Delete":
+        // nullify default key action
+        event.preventDefault();
+        break;
+    }
+  }
+  else {
+    // finally check arrow up/down
+    switch (event.key) {
+      case "Down":
+      case "ArrowDown":
+        // nullify default key action
+        event.preventDefault();
 
-    // print
-    print(input);
+        // get text length
+        let endpos = event.target.value.length;
+
+        // now move cursor back to the end of the text
+        event.target.setSelectionRange(endpos, endpos);
+        break;
+      case "Up":
+      case "ArrowUp":
+        // nullify default key action
+        event.preventDefault();
+
+        // now move cursor back to beginning of prompt
+        event.target.setSelectionRange(2, 2);
+      break;
+    }
   }
 }
 
