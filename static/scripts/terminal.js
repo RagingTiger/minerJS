@@ -220,3 +220,15 @@ prompt.addEventListener('keydown', get_input);
 
 // initialize prompt
 init_prompt(prompt);
+
+// turn off mouse click focus
+document.body.addEventListener("mousedown", function (event) {
+  // get target element
+  let elem = event.target;
+
+  // see if element has id=prompt or class=output
+  if (elem.id != 'prompt' && elem.className != 'output') {
+    // if none of the above don't react
+    event.preventDefault();
+  }
+});
